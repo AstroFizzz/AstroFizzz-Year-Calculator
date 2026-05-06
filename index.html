@@ -183,7 +183,8 @@
 
     function showError() {
       result.textContent = 'PH:';
-      message.textContent = 'Enter a valid year value';
+      // Updated message text per request
+      message.textContent = 'Enter a valid year';
       currentValid = false;
       currentN = null;
     }
@@ -191,7 +192,8 @@
     function calculateAndDisplay() {
       const raw = yearInput.value.trim();
       const n = Number(raw);
-      if (!Number.isFinite(n) || !Number.isInteger(n)) {
+      // Added 'n === 0' check to trigger error on 0
+      if (!Number.isFinite(n) || !Number.isInteger(n) || n === 0) {
         showError();
         return;
       }
